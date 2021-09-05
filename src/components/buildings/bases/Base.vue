@@ -4,12 +4,21 @@
 
 <script lang="ts">
 import { mixins } from 'vue-class-component';
-import Base from '@/components/buildings/bases/Base';
+import Building from '@/components/buildings/Building';
 import Tile from '@/components/Tile';
 
-export default class BaseD extends mixins(Tile, Base) {
+export default class Base extends mixins(Building, Tile) {
   bgX = 6;
 
   bgY = 67;
+
+  defense = 3;
+
+  moveCost = {
+    Infantry: 1,
+    Mechanic: 1,
+    Tires: 1,
+    Tread: 1,
+  };
 }
 </script>

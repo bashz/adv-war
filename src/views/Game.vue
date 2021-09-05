@@ -13,7 +13,10 @@ import HeadUpDisplay from '@/components/layers/HeadUpDisplay.vue';
 import Units from '@/components/layers/Units.vue';
 import Buildings from '@/components/layers/Buildings.vue';
 import Terrains from '@/components/layers/Terrains.vue';
-import { terrainConfig, buildingConfig } from '@/types/config.d';
+import {
+  terrainConfig, buildingConfig, mapConfig, unitConfig,
+} from '@/types/config.d';
+import mapToLayers from '@/helpers/mapToLayers';
 
 @Options({
   components: {
@@ -24,26 +27,27 @@ import { terrainConfig, buildingConfig } from '@/types/config.d';
   },
 })
 export default class Game extends Vue {
-  zoom = 4;
+  map: mapConfig = [
+    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
+    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
+    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
+    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
+  ];
+
+  zoom = 8;
 
   terrains: terrainConfig = [];
 
   buildings: buildingConfig = [];
 
+  units: unitConfig = [];
+
   mounted(): void {
     this.$el.focus();
-    this.terrains = [
-      ['PlainD', 'WoodD', 'PlainD', 'PlainD'],
-      ['RoadD', 'RoadD', 'RoadD', 'MountainD'],
-      ['RoadD', 'PlainD', 'MountainD', 'MountainD'],
-      ['RoadD', 'WoodD', 'WoodD', 'PlainD'],
-    ];
-    this.buildings = [
-      [{ type: 'BaseD', owner: 0 }],
-      [],
-      [undefined, { type: 'CityD', owner: 0 }],
-      [undefined, undefined, undefined, { type: 'HeadQuarterD', owner: 0 }],
-    ];
+    const layers = mapToLayers(this.map);
+    this.terrains = layers.terrains;
+    this.buildings = layers.buildings;
+    this.units = layers.units;
   }
 
   get scale(): {transform: string} {

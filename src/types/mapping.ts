@@ -1,30 +1,36 @@
 import { Component } from 'vue';
-import PlainD from '@/components/terrains/plains/PlainD.vue';
-import PlainS from '@/components/terrains/plains/PlainS.vue';
-import PlainM from '@/components/terrains/plains/PlainM.vue';
-import PlainSM from '@/components/terrains/plains/PlainSM.vue';
-import MountainD from '@/components/terrains/mountains/MountainD.vue';
-import RoadD from '@/components/terrains/roads/RoadD.vue';
-import WoodD from '@/components/terrains/woods/WoodD.vue';
-import HeadQuarterD from '@/components/buildings/hqs/HeadQuarterD.vue';
-import BaseD from '@/components/buildings/bases/BaseD.vue';
-import CityD from '@/components/buildings/cities/CityD.vue';
+import Plain from '@/components/terrains/plains/Plain.vue';
+import PlainShadow from '@/components/terrains/plains/PlainShadow.vue';
+import PlainSummit from '@/components/terrains/plains/PlainSummit.vue';
+import PlainShadowSummit from '@/components/terrains/plains/PlainShadowSummit.vue';
+import Mountain from '@/components/terrains/mountains/Mountain.vue';
+import MountainFull from '@/components/terrains/mountains/MountainFull.vue';
+import MountainSummit from '@/components/terrains/mountains/MountainSummit.vue';
+import MountainFullSummit from '@/components/terrains/mountains/MountainFullSummit.vue';
+import Road from '@/components/terrains/roads/Road.vue';
+import Wood from '@/components/terrains/woods/Wood.vue';
+import HeadQuarter from '@/components/buildings/hqs/HeadQuarter.vue';
+import Base from '@/components/buildings/bases/Base.vue';
+import City from '@/components/buildings/cities/City.vue';
 import { terrainName, buildingName } from '@/types/names.d';
 
 const terrainByType: {[name in terrainName]: Component} = {
-  PlainD,
-  PlainS,
-  PlainM,
-  PlainSM,
-  MountainD,
-  RoadD,
-  WoodD,
+  Plain,
+  PlainShadow,
+  PlainSummit,
+  PlainShadowSummit,
+  Mountain,
+  MountainFull,
+  MountainSummit,
+  MountainFullSummit,
+  Road,
+  Wood,
 };
 
 const buildingByType: {[name in buildingName]: Component} = {
-  HeadQuarterD,
-  BaseD,
-  CityD,
+  HeadQuarter,
+  Base,
+  City,
 };
 
 export { terrainByType, buildingByType };
