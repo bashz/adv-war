@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-game" tabindex="0">
+  <div class="aw-game" tabindex="0" :style="scale">
     <terrains class="aw-layer" :tiles="terrains"/>
     <buildings class="aw-layer" :tiles="buildings"/>
     <units class="aw-layer"/>
@@ -13,7 +13,7 @@ import HeadUpDisplay from '@/components/layers/HeadUpDisplay.vue';
 import Units from '@/components/layers/Units.vue';
 import Buildings from '@/components/layers/Buildings.vue';
 import Terrains from '@/components/layers/Terrains.vue';
-import { terrainTile, buildingTile } from '@/types/config.d';
+import { terrainConfig, buildingConfig } from '@/types/config.d';
 
 @Options({
   components: {
@@ -24,29 +24,46 @@ import { terrainTile, buildingTile } from '@/types/config.d';
   },
 })
 export default class Game extends Vue {
-  terrains: Array<Array<terrainTile>> = [];
+  zoom = 4;
 
-  buildings: Array<Array<buildingTile | undefined>> = [];
+  terrains: terrainConfig = [];
+
+  buildings: buildingConfig = [];
 
   mounted(): void {
     this.$el.focus();
     this.terrains = [
-      ['Plain', 'Wood', 'Plain', 'Plain'],
-      ['Road', 'Road', 'Road', 'Mountain'],
-      ['Road', 'Plain', 'Mountain', 'Mountain'],
-      ['Road', 'Wood', 'Wood', 'Plain'],
+      ['PlainD', 'WoodD', 'PlainD', 'PlainD'],
+      ['RoadD', 'RoadD', 'RoadD', 'MountainD'],
+      ['RoadD', 'PlainD', 'MountainD', 'MountainD'],
+      ['RoadD', 'WoodD', 'WoodD', 'PlainD'],
     ];
     this.buildings = [
+      [{ type: 'BaseD', owner: 0 }],
       [],
-      [{ type: 'Base', owner: 0 }],
-      [undefined, { type: 'City', owner: 0 }],
-      [undefined, undefined, undefined, { type: 'HeadQuarter', owner: 0 }],
+      [undefined, { type: 'CityD', owner: 0 }],
+      [undefined, undefined, undefined, { type: 'HeadQuarterD', owner: 0 }],
     ];
+  }
+
+  get scale(): {transform: string} {
+    return { transform: `scale(${this.zoom})` };
   }
 }
 </script>
 
 <style lang="scss">
+.aw-game {
+  position: relative;
+  width: 0;
+  transform-origin: left;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
 .aw-layer {
   position: relative;
   top: 0;

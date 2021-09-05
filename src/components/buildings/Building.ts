@@ -1,5 +1,5 @@
 import { Options } from 'vue-class-component';
-import { UIBuilding, unitEnvironment, Unit } from '@/types/ui.d';
+import { BuildingEntity, unitEnvironment, UnitEntity } from '@/types/entities.d';
 import playerColors from '@/types/traits';
 import Terrain from '@/components/terrains/Terrain';
 
@@ -8,7 +8,7 @@ import Terrain from '@/components/terrains/Terrain';
     originalOwner: Number,
   },
 })
-export default class Building extends Terrain implements UIBuilding {
+export default class Building extends Terrain implements BuildingEntity {
   readonly originalOwner!: number;
 
   repair: unitEnvironment = 'Land';
@@ -19,7 +19,7 @@ export default class Building extends Terrain implements UIBuilding {
 
   capturingOwner = this.originalOwner;
 
-  beCaptured(unit: Unit): void {
+  beCaptured(unit: UnitEntity): void {
     if (this.capturingOwner === unit.owner) {
       this.leftToCapture -= unit.size;
       if (this.leftToCapture <= 0) {

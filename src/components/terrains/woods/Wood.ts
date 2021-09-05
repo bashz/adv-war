@@ -1,13 +1,6 @@
-<template>
-  <div class="aw-terrain__wood" :style="{...bg, ...position}"/>
-</template>
-
-<script lang="ts">
 import Terrain from '@/components/terrains/Terrain';
 
 export default class Wood extends Terrain {
-  bgX = 1;
-
   defense = 2;
 
   moveCost = {
@@ -17,4 +10,3 @@ export default class Wood extends Terrain {
     Tread: 2,
   };
 }
-</script>

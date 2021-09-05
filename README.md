@@ -1,34 +1,13 @@
 # adv-war
 
-## Project setup
-```
-yarn install
-```
+## UIComponent naming
+D default
+S with shadow
+M with mountain tip
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+T top
+B bottom
+L left
+R right
+C enter
+J join
