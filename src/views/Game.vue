@@ -34,7 +34,7 @@ export default class Game extends Vue {
     [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
   ];
 
-  zoom = 8;
+  zoom = 1;
 
   terrains: terrainConfig = [];
 
