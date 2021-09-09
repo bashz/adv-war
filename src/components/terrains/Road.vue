@@ -10,6 +10,37 @@ import MultiSprite from '@/components/MultiSprite';
 export default class Road extends mixins(Terrain, MultiSprite) {
   sprites = [
     { x: 9, y: 3 },
+    { x: 13, y: 3 },
+    { x: 10, y: 3 },
+    { x: 14, y: 3 },
+    { x: 10, y: 3 },
+    { x: 14, y: 3 },
+    { x: 10, y: 3 },
+    { x: 14, y: 3 },
+    { x: 9, y: 3 },
+    { x: 13, y: 3 },
+    { x: 9, y: 0 },
+    { x: 12, y: 0 },
+    { x: 9, y: 2 },
+    { x: 12, y: 2 },
+    { x: 9, y: 1 },
+    { x: 12, y: 1 },
+    { x: 9, y: 3 },
+    { x: 13, y: 3 },
+    { x: 11, y: 0 },
+    { x: 14, y: 0 },
+    { x: 11, y: 2 },
+    { x: 14, y: 2 },
+    { x: 11, y: 1 },
+    { x: 14, y: 1 },
+    { x: 9, y: 3 },
+    { x: 13, y: 3 },
+    { x: 10, y: 0 },
+    { x: 13, y: 0 },
+    { x: 10, y: 2 },
+    { x: 13, y: 2 },
+    { x: 10, y: 1 },
+    { x: 13, y: 1 },
   ];
 
   defense = 0;
@@ -34,5 +65,15 @@ export default class Road extends mixins(Terrain, MultiSprite) {
       Tread: Infinity,
     },
   };
+
+  mounted(): void {
+    let i = this.spriteIndex;
+    if (['Mountain', 'Wood', 'City', 'Base', 'HeadQuarter'].includes(this.left?.type)) i += 1;
+    if (this.bottom?.type === 'Road') i += 2;
+    if (this.top?.type === 'Road') i += 4;
+    if (this.right?.type === 'Road') i += 8;
+    if (this.left?.type === 'Road') i += 16;
+    this.spriteIndex = i;
+  }
 }
 </script>

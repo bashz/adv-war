@@ -10,6 +10,7 @@ import MultiSprite from '@/components/MultiSprite';
 export default class Wood extends mixins(Terrain, MultiSprite) {
   sprites = [
     { x: 1, y: 0 },
+    { x: 2, y: 0 },
   ];
 
   defense = 2;
@@ -34,5 +35,11 @@ export default class Wood extends mixins(Terrain, MultiSprite) {
       Tread: Infinity,
     },
   };
+
+  mounted(): void {
+    let i = this.spriteIndex;
+    if (['Mountain', 'Wood', 'City', 'Base', 'HeadQuarter'].includes(this.left?.type)) i += 1;
+    this.spriteIndex = i;
+  }
 }
 </script>

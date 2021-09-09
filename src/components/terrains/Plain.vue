@@ -40,7 +40,7 @@ export default class Plain extends mixins(Terrain, MultiSprite) {
 
   mounted(): void {
     let i = this.spriteIndex;
-    if (this.left?.type === 'Mountain' || this.left?.type === 'City') i += 1;
+    if (['Mountain', 'Wood', 'City', 'Base', 'HeadQuarter'].includes(this.left?.type)) i += 1;
     if (this.bottom?.type === 'Mountain') i += 2;
     this.spriteIndex = i;
   }

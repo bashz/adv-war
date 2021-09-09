@@ -1,7 +1,7 @@
 <template>
   <div class="aw-game" tabindex="0" :style="scale">
-    <terrains class="aw-layer" :tiles="terrains"/>
-    <buildings class="aw-layer" :tiles="buildings"/>
+    <terrains class="aw-layer" :map="map"/>
+    <buildings class="aw-layer" :map="map"/>
     <units class="aw-layer"/>
     <head-up-display class="aw-layer"/>
   </div>
@@ -13,10 +13,7 @@ import HeadUpDisplay from '@/components/layers/HeadUpDisplay.vue';
 import Units from '@/components/layers/Units.vue';
 import Buildings from '@/components/layers/Buildings.vue';
 import Terrains from '@/components/layers/Terrains.vue';
-import {
-  terrainConfig, buildingConfig, mapConfig, unitConfig,
-} from '@/types/config.d';
-import mapToLayers from '@/helpers/mapToLayers';
+import { mapConfig } from '@/types/config.d';
 
 @Options({
   components: {
@@ -28,26 +25,16 @@ import mapToLayers from '@/helpers/mapToLayers';
 })
 export default class Game extends Vue {
   map: mapConfig = [
-    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
-    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
-    [{ type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' }],
-    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
+    [{ type: 'Road' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Road' }],
+    [{ type: 'Road' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Road' }],
+    [{ type: 'Road' }, { type: 'Road' }, { type: 'Road' }, { type: 'Road' }],
+    [{ type: 'Wood' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Road' }],
   ];
 
   zoom = 1;
 
-  terrains: terrainConfig = [];
-
-  buildings: buildingConfig = [];
-
-  units: unitConfig = [];
-
   mounted(): void {
     this.$el.focus();
-    const layers = mapToLayers(this.map);
-    this.terrains = layers.terrains;
-    this.buildings = layers.buildings;
-    this.units = layers.units;
   }
 
   get scale(): {transform: string} {

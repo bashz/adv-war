@@ -1,13 +1,13 @@
 <template>
   <div class="aw-layer__buildings" :style="style">
-    <div v-for="(rows, y) in tiles" :key="y">
+    <div v-for="(rows, y) in map" :key="y">
       <tile v-for="(building, x) in rows" :key="x" :x="x" :y="y">
         <component
           :is="getBuilding(building)"
-          :top="tiles[y - 1] && tiles[y - 1][x]"
-          :bottom="tiles[y - 1] && tiles[y - 1][x]"
-          :left="tiles[y][x - 1]"
-          :right="tiles[y][x + 1]"
+          :top="map[y - 1] && map[y - 1][x]"
+          :bottom="map[y - 1] && map[y - 1][x]"
+          :left="map[y][x - 1]"
+          :right="map[y][x + 1]"
           :original-owner="building?.owner || 0"
           class="aw-sprite aw-building"
         />
@@ -21,22 +21,26 @@ import { Options } from 'vue-class-component';
 import { Component } from 'vue';
 import Layer from '@/components/layers/Layer';
 import Tile from '@/components/Tile.vue';
-import { buildingTile } from '@/types/config.d';
+import { mapTile, mapConfig } from '@/types/config.d';
 import { buildingByType } from '@/types/mapping';
 
-const getBuilding = (building: buildingTile | undefined):
-  Component | undefined => (building?.type && buildingByType[building.type]) || undefined;
+const getBuilding = (tile: mapTile): Component | undefined => {
+  if (tile.type === 'City' || tile.type === 'Base' || tile.type === 'HeadQuarter') {
+    return buildingByType[tile.type];
+  }
+  return undefined;
+};
 
 @Options({
   components: {
     Tile,
   },
   props: {
-    tiles: Array,
+    map: Array,
   },
 })
 export default class Buildings extends Layer {
-  readonly tiles!: Array<Array<buildingTile>>;
+  readonly map!: mapConfig;
 
   elevation = 2;
 

@@ -1,13 +1,13 @@
 <template>
   <div class="aw-layer__terrains" :style="style">
-    <div v-for="(rows, y) in tiles" :key="y">
+    <div v-for="(rows, y) in map" :key="y">
       <tile v-for="(terrain, x) in rows" :key="x" :x="x" :y="y">
         <component
           :is="getTerrain(terrain)"
-          :top="tiles[y - 1] && tiles[y - 1][x]"
-          :bottom="tiles[y + 1] && tiles[y + 1][x]"
-          :left="tiles[y][x - 1]"
-          :right="tiles[y][x + 1]"
+          :top="map[y - 1] && map[y - 1][x]"
+          :bottom="map[y + 1] && map[y + 1][x]"
+          :left="map[y][x - 1]"
+          :right="map[y][x + 1]"
           class="aw-sprite aw-terrain"
         />
       </tile>
@@ -20,21 +20,28 @@ import { Options } from 'vue-class-component';
 import { Component } from 'vue';
 import Layer from '@/components/layers/Layer';
 import Tile from '@/components/Tile.vue';
-import { terrainTile } from '@/types/config.d';
+import { mapTile, mapConfig } from '@/types/config.d';
 import { terrainByType } from '@/types/mapping';
+import { terrainName } from '@/types/names.d';
 
-const getTerrain = (terrain: terrainTile): Component => terrainByType[terrain];
+const getTerrain = (tile: mapTile): Component => {
+  let terrain: terrainName = 'Plain';
+  if (tile.type === 'Road' || tile.type === 'Wood' || tile.type === 'Mountain') {
+    terrain = tile.type;
+  }
+  return terrainByType[terrain];
+};
 
 @Options({
   components: {
     Tile,
   },
   props: {
-    tiles: Array,
+    map: Array,
   },
 })
 export default class Terrains extends Layer {
-  readonly tiles!: Array<Array<terrainTile>>;
+  readonly map!: mapConfig;
 
   elevation = 1;
 
