@@ -9,7 +9,7 @@ import MultiSprite from '@/components/MultiSprite';
 
 export default class HeadQuarter extends mixins(Building, MultiSprite) {
   sprites = [
-    { x: 4, y: 67 },
+    { x: 4, y: 57 },
   ];
 
   moveCost = {

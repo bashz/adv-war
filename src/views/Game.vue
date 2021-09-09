@@ -25,13 +25,59 @@ import { mapConfig } from '@/types/config.d';
 })
 export default class Game extends Vue {
   map: mapConfig = [
-    [{ type: 'Road' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Road' }],
-    [{ type: 'Road' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Road' }],
-    [{ type: 'Road' }, { type: 'Road' }, { type: 'Road' }, { type: 'Road' }],
-    [{ type: 'Wood' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Road' }],
+    [
+      { type: 'HeadQuarter' }, { type: 'Base' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' },
+      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' },
+      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Base' }, { type: 'HeadQuarter' },
+    ],
+    [
+      { type: 'Base' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
+      { type: 'Mountain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' },
+      { type: 'Mountain' }, { type: 'City' }, { type: 'City' }, { type: 'Plain' }, { type: 'Base' },
+    ],
+    [
+      { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' },
+      { type: 'Wood' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Plain' },
+      { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' },
+    ],
+    [
+      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' },
+      { type: 'Plain' }, { type: 'Wood' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' },
+      { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Mountain' }, { type: 'Mountain' },
+    ],
+    [
+      { type: 'Mountain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' },
+      { type: 'Wood' }, { type: 'City' }, { type: 'Base' }, { type: 'City' }, { type: 'Wood' },
+      { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'City' }, { type: 'Mountain' },
+    ],
+    [
+      { type: 'Mountain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' },
+      { type: 'Wood' }, { type: 'Wood' }, { type: 'City' }, { type: 'Wood' }, { type: 'Plain' },
+      { type: 'Plain' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'City' }, { type: 'Mountain' },
+    ],
+    [
+      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' },
+      { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' },
+      { type: 'Wood' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' },
+    ],
+    [
+      { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Wood' },
+      { type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' },
+      { type: 'Wood' }, { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' },
+    ],
+    [
+      { type: 'Base' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
+      { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Plain' },
+      { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Base' },
+    ],
+    [
+      { type: 'HeadQuarter' }, { type: 'Base' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'City' },
+      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Wood' },
+      { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Base' }, { type: 'HeadQuarter' },
+    ],
   ];
 
-  zoom = 1;
+  zoom = 4;
 
   mounted(): void {
     this.$el.focus();
