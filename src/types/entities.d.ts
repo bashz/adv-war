@@ -1,3 +1,4 @@
+export type daysWeather = 'clear' | 'rain' | 'snow';
 export type weaponType = 'M-Gun' | 'Bazooka' | 'Cannon' | 'Vulcano';
 export type unitType = 'Infantry' | 'Mechanic' | 'Recon' | 'Tank' | 'Anti-air';
 export type tileType = 'Plain' | 'Wood' | 'Road' | 'Mountain' | 'HeadQuarter' | 'City' | 'Base';
@@ -32,7 +33,7 @@ export interface UnitEntity {
 
 export interface TerrainEntity {
   defense: number;
-  moveCost: {[mean in movementMean]: number};
+  moveCost: {[weather in daysWeather]: {[mean in movementMean]: number}};
 }
 
 export interface BuildingEntity extends TerrainEntity {

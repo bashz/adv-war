@@ -30,7 +30,7 @@ export default class Game extends Vue {
   map: mapConfig = [
     [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
     [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
-    [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
+    [{ type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' }],
     [{ type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }],
   ];
 
@@ -74,9 +74,7 @@ export default class Game extends Vue {
   left: 0;
 }
 
-.aw-tile {
-  position: absolute;
-  display: block;
+.aw-sprite {
   background-image: url('/sprites.png');
 }
 </style>

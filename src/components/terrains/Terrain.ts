@@ -5,9 +5,23 @@ export default class Terrain extends Vue implements TerrainEntity {
   defense = 0;
 
   moveCost = {
-    Infantry: Infinity,
-    Mechanic: Infinity,
-    Tires: Infinity,
-    Tread: Infinity,
+    clear: {
+      Infantry: Infinity,
+      Mechanic: Infinity,
+      Tires: Infinity,
+      Tread: Infinity,
+    },
+    rain: {
+      Infantry: Infinity,
+      Mechanic: Infinity,
+      Tires: Infinity,
+      Tread: Infinity,
+    },
+    snow: {
+      Infantry: Infinity,
+      Mechanic: Infinity,
+      Tires: Infinity,
+      Tread: Infinity,
+    },
   };
 }

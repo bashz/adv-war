@@ -1,14 +1,17 @@
 <template>
   <div class="aw-layer__buildings" :style="style">
     <div v-for="(rows, y) in tiles" :key="y">
-      <component
-        v-for="(building, x) in rows"
-        :key="x"
-        :is="getBuilding(building)"
-        :original-owner="building?.owner || 0"
-        class="aw-tile aw-building"
-        :x="x"
-        :y="y"/>
+      <tile v-for="(building, x) in rows" :key="x" :x="x" :y="y">
+        <component
+          :is="getBuilding(building)"
+          :top="tiles[y - 1] && tiles[y - 1][x]"
+          :bottom="tiles[y - 1] && tiles[y - 1][x]"
+          :left="tiles[y][x - 1]"
+          :right="tiles[y][x + 1]"
+          :original-owner="building?.owner || 0"
+          class="aw-sprite aw-building"
+        />
+      </tile>
     </div>
   </div>
 </template>
@@ -17,6 +20,7 @@
 import { Options } from 'vue-class-component';
 import { Component } from 'vue';
 import Layer from '@/components/layers/Layer';
+import Tile from '@/components/Tile.vue';
 import { buildingTile } from '@/types/config.d';
 import { buildingByType } from '@/types/mapping';
 
@@ -24,6 +28,9 @@ const getBuilding = (building: buildingTile | undefined):
   Component | undefined => (building?.type && buildingByType[building.type]) || undefined;
 
 @Options({
+  components: {
+    Tile,
+  },
   props: {
     tiles: Array,
   },
