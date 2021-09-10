@@ -17,6 +17,7 @@ export interface UISprite {
 }
 
 export interface UIMultiSprite extends UISprite {
+  readonly current: mapTile;
   readonly top?: mapTile;
   readonly bottom?: mapTile;
   readonly left?: mapTile;

@@ -5,6 +5,7 @@ import { mapTile } from '@/types/config.d';
 
 @Options({
   props: {
+    current: Object,
     top: Object,
     bottom: Object,
     left: Object,
@@ -12,19 +13,21 @@ import { mapTile } from '@/types/config.d';
   },
 })
 export default class MultiSprite extends Sprite implements UIMultiSprite {
-    readonly top!: mapTile;
+  readonly current!: mapTile;
 
-    readonly bottom!: mapTile;
+  readonly top!: mapTile;
 
-    readonly left!: mapTile;
+  readonly bottom!: mapTile;
 
-    readonly right!: mapTile;
+  readonly left!: mapTile;
 
-    sprites: Array<{x: number; y: number}> = [{ x: 0, y: 0 }];
+  readonly right!: mapTile;
 
-    spriteIndex = 0;
+  sprites: Array<{x: number; y: number}> = [{ x: 0, y: 0 }];
 
-    get sprite(): { x: number, y: number } {
-      return this.sprites[this.spriteIndex];
-    }
+  spriteIndex = 0;
+
+  get sprite(): { x: number, y: number } {
+    return this.sprites[this.spriteIndex];
+  }
 }

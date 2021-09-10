@@ -4,11 +4,11 @@
       <tile v-for="(building, x) in rows" :key="x" :x="x" :y="y">
         <component
           :is="getBuilding(building)"
+          :current="building"
           :top="map[y - 1] && map[y - 1][x]"
           :bottom="map[y - 1] && map[y - 1][x]"
           :left="map[y][x - 1]"
           :right="map[y][x + 1]"
-          :original-owner="building?.owner || 0"
           class="aw-sprite aw-building"
         />
       </tile>

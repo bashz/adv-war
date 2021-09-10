@@ -4,6 +4,7 @@
       <tile v-for="(terrain, x) in rows" :key="x" :x="x" :y="y">
         <component
           :is="getTerrain(terrain)"
+          :current="terrain"
           :top="map[y - 1] && map[y - 1][x]"
           :bottom="map[y + 1] && map[y + 1][x]"
           :left="map[y][x - 1]"
