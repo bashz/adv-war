@@ -25,7 +25,10 @@ export default class MultiSprite extends Sprite implements UIMultiSprite {
 
   sprites: Array<{x: number; y: number}> = [{ x: 0, y: 0 }];
 
-  spriteIndex = 0;
+  // eslint-disable-next-line class-methods-use-this
+  get spriteIndex(): number {
+    return 0;
+  }
 
   get sprite(): { x: number, y: number } {
     return this.sprites[this.spriteIndex];

@@ -1,23 +1,23 @@
 import { Options } from 'vue-class-component';
 import { BuildingEntity, unitEnvironment, UnitEntity } from '@/types/entities.d';
-import playerColors from '@/types/traits';
 import Terrain from '@/components/terrains/Terrain';
+import { mapTile } from '@/types/config.d';
 
 @Options({
   props: {
-    originalOwner: Number,
+    current: Object,
   },
 })
 export default class Building extends Terrain implements BuildingEntity {
-  readonly originalOwner!: number;
+  readonly current!: mapTile;
 
   repair: unitEnvironment = 'Land';
 
-  owner = this.originalOwner;
+  owner = this.current.owner || 0;
 
   leftToCapture = 20;
 
-  capturingOwner = this.originalOwner;
+  capturingOwner = this.current.owner || 0;
 
   beCaptured(unit: UnitEntity): void {
     if (this.capturingOwner === unit.owner) {
@@ -31,9 +31,5 @@ export default class Building extends Terrain implements BuildingEntity {
       this.leftToCapture = 20;
       this.beCaptured(unit);
     }
-  }
-
-  get color(): string {
-    return playerColors[this.owner];
   }
 }

@@ -36,10 +36,10 @@ export default class Wood extends mixins(Terrain, MultiSprite) {
     },
   };
 
-  mounted(): void {
-    let i = this.spriteIndex;
+  get spriteIndex(): number {
+    let i = 0;
     if (['Mountain', 'Wood', 'City', 'Base', 'HeadQuarter'].includes(this.left?.type)) i += 1;
-    this.spriteIndex = i;
+    return i;
   }
 }
 </script>

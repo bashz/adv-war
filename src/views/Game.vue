@@ -2,23 +2,17 @@
   <div class="aw-game" tabindex="0" :style="scale">
     <terrains class="aw-layer" :map="map"/>
     <buildings class="aw-layer" :map="map"/>
-    <units class="aw-layer"/>
-    <head-up-display class="aw-layer"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import HeadUpDisplay from '@/components/layers/HeadUpDisplay.vue';
-import Units from '@/components/layers/Units.vue';
 import Buildings from '@/components/layers/Buildings.vue';
 import Terrains from '@/components/layers/Terrains.vue';
 import { mapConfig } from '@/types/config.d';
 
 @Options({
   components: {
-    HeadUpDisplay,
-    Units,
     Buildings,
     Terrains,
   },
@@ -26,14 +20,14 @@ import { mapConfig } from '@/types/config.d';
 export default class Game extends Vue {
   map: mapConfig = [
     [
-      { type: 'HeadQuarter' }, { type: 'Base' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' },
+      { type: 'HeadQuarter', owner: 4 }, { type: 'Base', owner: 4 }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' },
       { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' },
-      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Base' }, { type: 'HeadQuarter' },
+      { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Base', owner: 3 }, { type: 'HeadQuarter', owner: 3 },
     ],
     [
-      { type: 'Base' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
+      { type: 'Base', owner: 4 }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
       { type: 'Mountain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' },
-      { type: 'Mountain' }, { type: 'City' }, { type: 'City' }, { type: 'Plain' }, { type: 'Base' },
+      { type: 'Mountain' }, { type: 'City' }, { type: 'City' }, { type: 'Plain' }, { type: 'Base', owner: 3 },
     ],
     [
       { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' },
@@ -66,18 +60,18 @@ export default class Game extends Vue {
       { type: 'Wood' }, { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' },
     ],
     [
-      { type: 'Base' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
+      { type: 'Base', owner: 1 }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
       { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Plain' },
-      { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Base' },
+      { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Base', owner: 2 },
     ],
     [
-      { type: 'HeadQuarter' }, { type: 'Base' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'City' },
+      { type: 'HeadQuarter', owner: 1 }, { type: 'Base', owner: 1 }, { type: 'Plain' }, { type: 'Wood' }, { type: 'City' },
       { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Wood' },
-      { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Base' }, { type: 'HeadQuarter' },
+      { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Base', owner: 2 }, { type: 'HeadQuarter', owner: 2 },
     ],
   ];
 
-  zoom = 4;
+  zoom = 2;
 
   mounted(): void {
     this.$el.focus();
@@ -108,6 +102,6 @@ export default class Game extends Vue {
 }
 
 .aw-sprite {
-  background-image: url('/sprites.png');
+  background-image: url('/world.png');
 }
 </style>

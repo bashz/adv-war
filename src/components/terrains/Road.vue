@@ -66,14 +66,14 @@ export default class Road extends mixins(Terrain, MultiSprite) {
     },
   };
 
-  mounted(): void {
-    let i = this.spriteIndex;
+  get spriteIndex(): number {
+    let i = 0;
     if (['Mountain', 'Wood', 'City', 'Base', 'HeadQuarter'].includes(this.left?.type)) i += 1;
     if (this.bottom?.type === 'Road') i += 2;
     if (this.top?.type === 'Road') i += 4;
     if (this.right?.type === 'Road') i += 8;
     if (this.left?.type === 'Road') i += 16;
-    this.spriteIndex = i;
+    return i;
   }
 }
 </script>

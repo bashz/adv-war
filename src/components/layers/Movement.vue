@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-layer__hud" :style="style">
+  <div class="aw-layer__movement" :style="style">
     <slot/>
   </div>
 </template>
@@ -12,7 +12,7 @@ import Layer from '@/components/layers/Layer';
   components: {
   },
 })
-export default class HeadUpDisplay extends Layer {
-  elevation = 8;
+export default class Movement extends Layer {
+  elevation = 5;
 }
 </script>

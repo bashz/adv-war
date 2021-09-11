@@ -9,6 +9,11 @@ import MultiSprite from '@/components/MultiSprite';
 
 export default class city extends mixins(Building, MultiSprite) {
   sprites = [
+    { x: 5, y: 57 },
+    { x: 5, y: 59 },
+    { x: 5, y: 61 },
+    { x: 5, y: 63 },
+    { x: 5, y: 65 },
     { x: 5, y: 67 },
   ];
 
@@ -34,5 +39,9 @@ export default class city extends mixins(Building, MultiSprite) {
       Tread: Infinity,
     },
   };
+
+  get spriteIndex(): number {
+    return this.owner;
+  }
 }
 </script>

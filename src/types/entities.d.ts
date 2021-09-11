@@ -1,3 +1,5 @@
+import { mapTile } from '@/types/config.d';
+
 export type daysWeather = 'clear' | 'rain' | 'snow';
 export type weaponType = 'M-Gun' | 'Bazooka' | 'Cannon' | 'Vulcano';
 export type unitType = 'Infantry' | 'Mechanic' | 'Recon' | 'Tank' | 'Anti-air';
@@ -37,12 +39,11 @@ export interface TerrainEntity {
 }
 
 export interface BuildingEntity extends TerrainEntity {
-  readonly originalOwner: number;
+  readonly current: mapTile;
   repair: unitEnvironment;
   owner: number;
   leftToCapture: number;
   capturingOwner: number;
-  readonly color: string;
   beCaptured(unit: Unit): void;
 }
 

@@ -38,11 +38,11 @@ export default class Mountain extends mixins(Terrain, MultiSprite) {
     },
   };
 
-  mounted(): void {
-    let i = this.spriteIndex;
+  get spriteIndex(): number {
+    let i = 0;
     if (this.top?.type === 'Mountain' || this.top?.type === 'Plain') i += 1;
     if (this.bottom?.type === 'Mountain') i += 2;
-    this.spriteIndex = i;
+    return i;
   }
 }
 </script>

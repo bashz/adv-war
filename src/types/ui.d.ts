@@ -23,7 +23,7 @@ export interface UIMultiSprite extends UISprite {
   readonly left?: mapTile;
   readonly right?: mapTile;
   sprites: Array<{x: number; y: number}>;
-  spriteIndex: number;
+  readonly spriteIndex: number;
   readonly sprite: {x: number; y: number};
 }
 

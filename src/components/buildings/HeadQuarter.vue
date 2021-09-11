@@ -9,7 +9,12 @@ import MultiSprite from '@/components/MultiSprite';
 
 export default class HeadQuarter extends mixins(Building, MultiSprite) {
   sprites = [
-    { x: 4, y: 57 },
+    { x: 0, y: 57 },
+    { x: 0, y: 59 },
+    { x: 0, y: 61 },
+    { x: 0, y: 63 },
+    { x: 0, y: 65 },
+    { x: 0, y: 67 },
   ];
 
   moveCost = {
@@ -32,5 +37,9 @@ export default class HeadQuarter extends mixins(Building, MultiSprite) {
       Tread: Infinity,
     },
   };
+
+  get spriteIndex(): number {
+    return this.owner;
+  }
 }
 </script>

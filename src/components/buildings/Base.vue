@@ -10,6 +10,11 @@ import MultiSprite from '@/components/MultiSprite';
 export default class Base extends mixins(Building, MultiSprite) {
   sprites = [
     { x: 6, y: 57 },
+    { x: 6, y: 59 },
+    { x: 6, y: 61 },
+    { x: 6, y: 63 },
+    { x: 6, y: 65 },
+    { x: 6, y: 67 },
   ];
 
   defense = 3;
@@ -34,5 +39,9 @@ export default class Base extends mixins(Building, MultiSprite) {
       Tread: Infinity,
     },
   };
+
+  get spriteIndex() {
+    return this.owner;
+  }
 }
 </script>
