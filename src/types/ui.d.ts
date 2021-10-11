@@ -2,7 +2,9 @@ import { mapTile } from '@/types/config.d';
 
 export interface UILayer {
   elevation: number;
-  readonly style: {zIndex: number};
+  spriteFile: string;
+  readonly zIndex: {zIndex: number};
+  readonly background: {backgroundImage: string}
 }
 
 export interface UITile {
@@ -13,6 +15,7 @@ export interface UITile {
 
 export interface UISprite {
   sprite: {x: number; y: number};
+  size: {w: number; h: number};
   readonly background: {backgroundPosition: string};
 }
 

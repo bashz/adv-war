@@ -100,8 +100,4 @@ export default class Game extends Vue {
   top: 0;
   left: 0;
 }
-
-.aw-sprite {
-  background-image: url('/world.png');
-}
 </style>

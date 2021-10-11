@@ -9,10 +9,10 @@ import MultiSprite from '@/components/MultiSprite';
 
 export default class Mountain extends mixins(Terrain, MultiSprite) {
   sprites = [
-    { x: 4, y: 0 },
+    { x: 4, y: 1 },
     { x: 5, y: 1 },
-    { x: 6, y: 0 },
     { x: 6, y: 1 },
+    { x: 7, y: 1 },
   ];
 
   defense = 4;

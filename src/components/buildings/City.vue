@@ -9,13 +9,15 @@ import MultiSprite from '@/components/MultiSprite';
 
 export default class city extends mixins(Building, MultiSprite) {
   sprites = [
-    { x: 5, y: 57 },
-    { x: 5, y: 59 },
-    { x: 5, y: 61 },
-    { x: 5, y: 63 },
-    { x: 5, y: 65 },
-    { x: 5, y: 67 },
+    { x: 5, y: 0 },
+    { x: 5, y: 1 },
+    { x: 5, y: 2 },
+    { x: 5, y: 3 },
+    { x: 5, y: 4 },
+    { x: 5, y: 5 },
   ];
+
+  size = { w: 16, h: 32 };
 
   defense = 3;
 

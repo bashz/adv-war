@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-layer__buildings" :style="style">
+  <div class="aw-layer__buildings" :style="zIndex">
     <div v-for="(rows, y) in map" :key="y">
       <tile v-for="(building, x) in rows" :key="x" :x="x" :y="y">
         <component
@@ -9,7 +9,8 @@
           :bottom="map[y - 1] && map[y - 1][x]"
           :left="map[y][x - 1]"
           :right="map[y][x + 1]"
-          class="aw-sprite aw-building"
+          :style="background"
+          class="aw-building"
         />
       </tile>
     </div>
@@ -43,6 +44,8 @@ export default class Buildings extends Layer {
   readonly map!: mapConfig;
 
   elevation = 2;
+
+  spriteFile = '/img/estate.png';
 
   getBuilding = getBuilding;
 }

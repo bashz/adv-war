@@ -9,8 +9,8 @@ import MultiSprite from '@/components/MultiSprite';
 
 export default class Wood extends mixins(Terrain, MultiSprite) {
   sprites = [
+    { x: 0, y: 0 },
     { x: 1, y: 0 },
-    { x: 2, y: 0 },
   ];
 
   defense = 2;
