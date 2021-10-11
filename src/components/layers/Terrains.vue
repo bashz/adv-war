@@ -22,12 +22,11 @@ import { Options } from 'vue-class-component';
 import { Component } from 'vue';
 import Layer from '@/components/layers/Layer';
 import Tile from '@/components/Tile.vue';
-import { mapTile, mapConfig } from '@/types/config.d';
+import { mapTile, mapConfig, terrainType } from '@/types/config.d';
 import { terrainByType } from '@/types/mapping';
-import { terrainName } from '@/types/names.d';
 
 const getTerrain = (tile: mapTile): Component => {
-  let terrain: terrainName = 'Plain';
+  let terrain: terrainType = 'Plain';
   if (tile.type === 'Road' || tile.type === 'Wood' || tile.type === 'Mountain') {
     terrain = tile.type;
   }

@@ -6,16 +6,16 @@ import Wood from '@/components/terrains/Wood.vue';
 import HeadQuarter from '@/components/buildings/HeadQuarter.vue';
 import Base from '@/components/buildings/Base.vue';
 import City from '@/components/buildings/City.vue';
-import { terrainName, buildingName } from '@/types/names.d';
+import { terrainType, buildingType } from '@/types/config.d';
 
-const terrainByType: {[name in terrainName]: Component} = {
+const terrainByType: {[Type in terrainType]: Component} = {
   Plain,
   Mountain,
   Road,
   Wood,
 };
 
-const buildingByType: {[name in buildingName]: Component} = {
+const buildingByType: {[Type in buildingType]: Component} = {
   HeadQuarter,
   Base,
   City,

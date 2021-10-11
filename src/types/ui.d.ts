@@ -31,6 +31,8 @@ export interface UIMultiSprite extends UISprite {
 }
 
 export interface UIAnimation extends UIMultiSprite {
-  sequence: [{index: number; duration: number}];
+  sequence: Array<number>;
+  frame: number;
+  animationIndex: number;
   animate(): void;
 }

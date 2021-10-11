@@ -1,32 +1,31 @@
-import { terrainName, buildingName } from '@/types/names.d';
-import { tileType, unitType } from '@/types/entities.d';
+export type unitType = 'Infantry' | 'Mechanic' | 'Recon' | 'Tank' | 'Anti-air';
+export type terrainType = 'Plain' | 'Wood' | 'Road' | 'Mountain';
+export type buildingType = 'HeadQuarter' | 'City' | 'Base';
+export type tileType = terrainType | buildingType;
 
 export type mapTile = {
   type: tileType;
   owner?: number;
-  unit?: {
-    name: unitType;
-    size: number;
-    owner: number;
-    fuel: number;
-    primaryAmmo: number;
-    secondaryAmmo: number;
-  }
+  leftToCapture?: number;
+  capturingBy?: number;
 }
-export type mapConfig = Array<Array<mapTile>>;
-
-export type terrainTile = terrainName;
-export type terrainConfig = Array<Array<terrainTile>>;
-
-export type buildingTile = {type: buildingName; owner?: number };
-export type buildingConfig = Array<Array<buildingTile | undefined>>;
 
 export type unitTile = {
-  name: unitType;
-  size: number;
+  type: unitType;
   owner: number;
-  fuel: number;
-  primaryAmmo: number;
-  secondaryAmmo: number;
-};
-export type unitConfig = Array<Array< unitTile | undefined>>;
+  x: number;
+  y: number;
+  size?: number;
+  fuel?: number;
+  primaryAmmo?: number;
+  altAmmo?: number;
+}
+
+export type mapConfig = Array<Array<mapTile>>;
+
+export type unitConfig = Array<unitTile>;
+
+export type gameConfig = {
+  map: mapConfig;
+  units: unitConfig;
+}

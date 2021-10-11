@@ -17,17 +17,17 @@ export default class Building extends Terrain implements BuildingEntity {
 
   leftToCapture = 20;
 
-  capturingOwner = this.current.owner || 0;
+  capturingBy = this.current.owner || 0;
 
   beCaptured(unit: UnitEntity): void {
-    if (this.capturingOwner === unit.owner) {
+    if (this.capturingBy === unit.owner) {
       this.leftToCapture -= unit.size;
       if (this.leftToCapture <= 0) {
         this.owner = unit.owner;
         this.leftToCapture = 20;
       }
     } else {
-      this.capturingOwner = unit.owner;
+      this.capturingBy = unit.owner;
       this.leftToCapture = 20;
       this.beCaptured(unit);
     }
