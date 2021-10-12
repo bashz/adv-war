@@ -1,7 +1,7 @@
 <template>
   <div class="aw-game" tabindex="0" :style="scale">
     <terrains class="aw-layer" :map="map"/>
-    <buildings class="aw-layer" :map="map"/>
+    <buildings class="aw-layer" :map="map" :frame="frame"/>
   </div>
 </template>
 
@@ -73,12 +73,19 @@ export default class Game extends Vue {
 
   zoom = 2;
 
+  frame = -1;
+
   mounted(): void {
     this.$el.focus();
+    this.animate();
   }
 
   get scale(): {transform: string} {
     return { transform: `scale(${this.zoom})` };
+  }
+
+  animate(): void {
+    this.frame = requestAnimationFrame(this.animate);
   }
 }
 </script>

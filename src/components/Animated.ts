@@ -1,10 +1,21 @@
+import { Options } from 'vue-class-component';
 import { UIAnimation } from '@/types/ui.d';
 import MultiSprite from '@/components/MultiSprite';
 
+@Options({
+  props: {
+    frame: Number,
+  },
+  watch: {
+    frame() {
+      this.animate();
+    },
+  },
+})
 export default class Animated extends MultiSprite implements UIAnimation {
-  sequence: Array<number> = [];
+  readonly frame!: number;
 
-  frame = -1;
+  sequence: Array<number> = [];
 
   animationIndex = 0;
 

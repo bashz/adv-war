@@ -10,6 +10,7 @@
           :left="map[y][x - 1]"
           :right="map[y][x + 1]"
           :style="background"
+          :frame="frame"
           class="aw-building"
         />
       </tile>
@@ -38,6 +39,7 @@ const getBuilding = (tile: mapTile): Component | undefined => {
   },
   props: {
     map: Array,
+    frame: Number,
   },
 })
 export default class Buildings extends Layer {
