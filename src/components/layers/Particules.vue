@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-layer__movement" :style="style">
+  <div class="aw-layer__vision" :style="style">
     <slot/>
   </div>
 </template>
@@ -12,7 +12,7 @@ import Layer from '@/components/layers/Layer';
   components: {
   },
 })
-export default class Movement extends Layer {
-  elevation = 6;
+export default class Particules extends Layer {
+  elevation = 7;
 }
 </script>

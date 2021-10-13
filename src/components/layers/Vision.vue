@@ -13,6 +13,6 @@ import Layer from '@/components/layers/Layer';
   },
 })
 export default class Vision extends Layer {
-  elevation = 4;
+  elevation = 5;
 }
 </script>
