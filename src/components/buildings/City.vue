@@ -23,7 +23,7 @@ export default class city extends mixins(Building, Animated) {
     { x: 15, y: 5 },
   ];
 
-  sequence: Array<number> = [40, 80];
+  sequence = [40, 80];
 
   size = { w: 16, h: 32 };
 
@@ -51,8 +51,7 @@ export default class city extends mixins(Building, Animated) {
   };
 
   get spriteIndex(): number {
-    if (this.owner > 0) return this.owner + (this.animationIndex * 6);
-    return this.owner;
+    return this.owner ? this.owner + (this.animationIndex * 6) : this.owner;
   }
 }
 </script>

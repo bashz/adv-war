@@ -77,6 +77,7 @@ export default class Game extends Vue {
 
   mounted(): void {
     this.$el.focus();
+    cancelAnimationFrame(this.frame);
     this.animate();
   }
 
@@ -86,6 +87,10 @@ export default class Game extends Vue {
 
   animate(): void {
     this.frame = requestAnimationFrame(this.animate);
+  }
+
+  beforeUnmount(): void {
+    cancelAnimationFrame(this.frame);
   }
 }
 </script>

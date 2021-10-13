@@ -5,9 +5,9 @@
 <script lang="ts">
 import { mixins } from 'vue-class-component';
 import Building from '@/components/buildings/Building';
-import MultiSprite from '@/components/MultiSprite';
+import Animated from '@/components/Animated';
 
-export default class HeadQuarter extends mixins(Building, MultiSprite) {
+export default class HeadQuarter extends mixins(Building, Animated) {
   sprites = [
     { x: 0, y: 0 },
     { x: 0, y: 1 },
@@ -15,7 +15,15 @@ export default class HeadQuarter extends mixins(Building, MultiSprite) {
     { x: 0, y: 3 },
     { x: 0, y: 4 },
     { x: 0, y: 5 },
+    { x: 10, y: 0 },
+    { x: 10, y: 1 },
+    { x: 10, y: 2 },
+    { x: 10, y: 3 },
+    { x: 10, y: 4 },
+    { x: 10, y: 5 },
   ];
+
+  sequence = [40, 80];
 
   size = { w: 16, h: 32 };
 
@@ -41,7 +49,7 @@ export default class HeadQuarter extends mixins(Building, MultiSprite) {
   };
 
   get spriteIndex(): number {
-    return this.owner;
+    return this.owner ? this.owner + (this.animationIndex * 6) : this.owner;
   }
 }
 </script>
