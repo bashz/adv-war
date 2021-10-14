@@ -24,7 +24,7 @@ import { Component } from 'vue';
 import Layer from '@/components/layers/Layer';
 import Tile from '@/components/Tile.vue';
 import { mapTile, mapConfig } from '@/types/config.d';
-import { buildingByType } from '@/types/mapping';
+import buildingByType from '@/models/buildingByType';
 
 const getBuilding = (tile: mapTile): Component | undefined => {
   if (tile.type === 'City' || tile.type === 'Base' || tile.type === 'HeadQuarter') {

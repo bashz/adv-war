@@ -2,6 +2,7 @@
   <div class="aw-game" tabindex="0" :style="scale">
     <terrains class="aw-layer" :map="map"/>
     <buildings class="aw-layer" :map="map" :frame="frame"/>
+    <units class="aw-layer" :units="units" :frame="frame"/>
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import { Options, Vue } from 'vue-class-component';
 import Buildings from '@/components/layers/Buildings.vue';
 import Terrains from '@/components/layers/Terrains.vue';
-import { mapConfig } from '@/types/config.d';
+import Units from '@/components/layers/Units.vue';
+import { mapConfig, unitConfig } from '@/types/config.d';
 
 @Options({
   components: {
     Buildings,
     Terrains,
+    Units,
   },
 })
 export default class Game extends Vue {
@@ -69,6 +72,12 @@ export default class Game extends Vue {
       { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Wood' },
       { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Base', owner: 2 }, { type: 'HeadQuarter', owner: 2 },
     ],
+  ];
+
+  units: unitConfig = [
+    {
+      type: 'Infantry', owner: 1, x: 6, y: 6,
+    },
   ];
 
   zoom = 2;

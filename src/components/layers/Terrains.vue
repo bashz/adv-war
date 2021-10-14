@@ -23,7 +23,7 @@ import { Component } from 'vue';
 import Layer from '@/components/layers/Layer';
 import Tile from '@/components/Tile.vue';
 import { mapTile, mapConfig, terrainType } from '@/types/config.d';
-import { terrainByType } from '@/types/mapping';
+import terrainByType from '@/models/terrainByType';
 
 const getTerrain = (tile: mapTile): Component => {
   let terrain: terrainType = 'Plain';

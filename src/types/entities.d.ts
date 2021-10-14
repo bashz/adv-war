@@ -6,26 +6,28 @@ export type unitFamily = 'Infantry' | 'Vehicle';
 export type unitEnvironment = 'Land';
 export type movementMean = 'Infantry' | 'Mechanic' | 'Tires' | 'Tread';
 
+export type damageType = {[type in unitFamily]: number};
+
 export interface WeaponEntity {
   name: weaponType;
   ammo: number;
   maxAmmo: number;
-  damage: {[type in unitFamily]: number};
+  damage: damageType;
 }
 
 export interface UnitEntity {
   cost: number;
   owner: number;
-  familly: unitFamily;
+  family: unitFamily;
   environment: unitEnvironment;
-  size: number;
+  power: number;
   moves: number;
   movementType: movementMean;
   vision: number;
   fuel: number;
   maxFuel: number;
-  primaryWeapon: Weapon;
-  altWeapon?: Weapon;
+  primaryWeapon: WeaponEntity;
+  altWeapon?: WeaponEntity;
   x: number;
   y: number;
 }

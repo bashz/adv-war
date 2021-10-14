@@ -14,5 +14,14 @@ import Layer from '@/components/layers/Layer';
 })
 export default class Units extends Layer {
   elevation = 3;
+
+  spriteFile = '/img/population.png';
 }
 </script>
+
+<style lang="scss">
+.aw-unit {
+  width: 24px;
+  height: 24px;
+}
+</style>
