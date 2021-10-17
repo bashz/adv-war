@@ -1,15 +1,26 @@
 import { Options } from 'vue-class-component';
 import { BuildingEntity, unitEnvironment, UnitEntity } from '@/types/entities.d';
 import Terrain from '@/components/terrains/Terrain';
-import { mapTile } from '@/types/config.d';
+import { mapTile, unitType } from '@/types/config.d';
 
 @Options({
   props: {
     current: Object,
+    isActive: Boolean,
+    x: Number,
+    y: Number,
   },
 })
 export default class Building extends Terrain implements BuildingEntity {
   readonly current!: mapTile;
+
+  readonly isActive!: boolean;
+
+  readonly x!: number;
+
+  readonly y!: number;
+
+  units: Array<UnitEntity> = [];
 
   repair: unitEnvironment = 'Land';
 
@@ -21,7 +32,7 @@ export default class Building extends Terrain implements BuildingEntity {
 
   beCaptured(unit: UnitEntity): void {
     if (this.capturingBy === unit.owner) {
-      this.leftToCapture -= unit.size;
+      this.leftToCapture -= unit.power;
       if (this.leftToCapture <= 0) {
         this.owner = unit.owner;
         this.leftToCapture = 20;
@@ -31,5 +42,9 @@ export default class Building extends Terrain implements BuildingEntity {
       this.leftToCapture = 20;
       this.beCaptured(unit);
     }
+  }
+
+  train(unit: unitType): void {
+    if (unit) window.scrollTo(this.x, this.y);
   }
 }

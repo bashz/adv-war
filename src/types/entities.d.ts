@@ -1,4 +1,4 @@
-import { mapTile } from '@/types/config.d';
+import { mapTile, unitType } from '@/types/config.d';
 
 export type daysWeather = 'clear' | 'rain' | 'snow';
 export type weaponType = 'M-Gun' | 'Bazooka' | 'Cannon' | 'Vulcano';
@@ -38,16 +38,15 @@ export interface TerrainEntity {
 }
 
 export interface BuildingEntity extends TerrainEntity {
+  readonly isActive: boolean;
   readonly current: mapTile;
+  readonly x: number;
+  readonly y: number;
+  units: Array<UnitEntity>;
   repair: unitEnvironment;
   owner: number;
   leftToCapture: number;
   capturingBy: number;
-  beCaptured(unit: Unit): void;
-}
-
-export interface InhibitorEntity extends BuildingEntity {
-  readonly isActive: boolean;
-  units: Array<Unit>;
-  train(unit: string): void;
+  beCaptured(unit: UnitEntity): void;
+  train(unit: unitType): void;
 }
