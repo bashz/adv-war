@@ -45,6 +45,6 @@ export default class Units extends Layer {
 .aw-unit {
   width: 24px;
   height: 24px;
-  transform: translate(-4px, -10px);
+  translate: -4px -10px;
 }
 </style>

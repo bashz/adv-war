@@ -57,6 +57,6 @@ export default class Buildings extends Layer {
 .aw-building {
   width: 16px;
   height: 32px;
-  transform: translateY(-16px);
+  translate: 0 -16px;
 }
 </style>

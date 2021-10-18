@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-game" tabindex="0" :style="scale">
+  <div class="aw-game" tabindex="0" :style="dimensions">
     <terrains class="aw-layer" :map="map"/>
     <buildings class="aw-layer" :map="map" :frame="frame"/>
     <units class="aw-layer" :units="units" :frame="frame"/>
@@ -99,11 +99,17 @@ export default class Game extends Vue {
   mounted(): void {
     this.$el.focus();
     cancelAnimationFrame(this.frame);
-    this.animate();
+    // this.animate();
   }
 
-  get scale(): {transform: string} {
-    return { transform: `scale(${this.zoom})` };
+  get dimensions(): {scale: number; width: string; margin: string} {
+    const rows = this.map.length;
+    const columns = (rows && this.map[0].length) || 0;
+    return {
+      scale: this.zoom,
+      width: `${columns * 16 * this.zoom}px`,
+      margin: `${16 * this.zoom}px auto`,
+    };
   }
 
   animate(): void {
@@ -119,7 +125,6 @@ export default class Game extends Vue {
 <style lang="scss">
 .aw-game {
   position: relative;
-  width: 0;
   transform-origin: left;
 
   &:focus {
