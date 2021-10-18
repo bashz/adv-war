@@ -13,7 +13,7 @@ export default class Mechanic extends mixins(Unit, Animated) {
     { x: 1, y: 5 },
   ];
 
-  sequence = [20, 20];
+  sequence = [40, 40];
 
   size = { w: 24, h: 24 };
 

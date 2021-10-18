@@ -4,7 +4,7 @@ import { UISprite } from '@/types/ui.d';
 export default class Sprite extends Vue implements UISprite {
   private defaultSprite = { x: 0, y: 0 };
 
-  size = { w: 16, h: 16 };
+  size = { w: 18, h: 18 };
 
   get sprite(): { x: number, y: number } {
     return this.defaultSprite;

@@ -76,7 +76,7 @@ export default class Game extends Vue {
 
   units: unitConfig = [
     {
-      type: 'Infantry', owner: 1, x: 1, y: 3,
+      type: 'Infantry', owner: 1, x: 0, y: 8,
     },
     {
       type: 'Mechanic', owner: 1, x: 7, y: 0,
