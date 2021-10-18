@@ -1,7 +1,7 @@
 import { mapTile, unitType } from '@/types/config.d';
 
 export type daysWeather = 'clear' | 'rain' | 'snow';
-export type weaponType = 'M-Gun' | 'Bazooka' | 'Cannon' | 'Vulcano';
+export type weaponType = 'MGun' | 'Bazooka' | 'Cannon' | 'Vulcano';
 export type unitFamily = 'Infantry' | 'Vehicle';
 export type unitEnvironment = 'Land';
 export type movementMean = 'Infantry' | 'Mechanic' | 'Tires' | 'Tread';

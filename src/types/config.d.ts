@@ -1,4 +1,4 @@
-export type unitType = 'Infantry' | 'Mechanic' | 'Recon' | 'Tank' | 'Anti-air';
+export type unitType = 'Infantry' | 'Mechanic' | 'Recon' | 'Tank' | 'AntiAir';
 export type terrainType = 'Plain' | 'Wood' | 'Road' | 'Mountain';
 export type buildingType = 'HeadQuarter' | 'City' | 'Base';
 export type tileType = terrainType | buildingType;

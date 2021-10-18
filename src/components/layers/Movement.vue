@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-layer__movement" :style="style">
+  <div class="aw-layer__movement" :style="zIndex">
     <slot/>
   </div>
 </template>

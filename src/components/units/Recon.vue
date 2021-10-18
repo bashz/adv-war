@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-unit__infantry" :style="background"/>
+  <div class="aw-unit__recon" :style="background"/>
 </template>
 
 <script lang="ts">
@@ -7,15 +7,13 @@ import { mixins } from 'vue-class-component';
 import Unit from '@/components/units/Unit';
 import Animated from '@/components/Animated';
 
-export default class Infantry extends mixins(Unit, Animated) {
+export default class Recon extends mixins(Unit, Animated) {
   sprites = [
-    { x: 0, y: 0 },
-    { x: 1, y: 0 },
-    { x: 2, y: 0 },
-    { x: 1, y: 0 },
+    { x: 0, y: 10 },
+    { x: 1, y: 10 },
   ];
 
-  sequence = [20, 20, 20, 20];
+  sequence = [20, 20];
 
   size = { w: 24, h: 24 };
 

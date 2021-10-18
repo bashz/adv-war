@@ -25,7 +25,7 @@ export default class Unit extends Vue implements UnitEntity {
   maxFuel = 99;
 
   primaryWeapon: WeaponEntity = {
-    name: 'M-Gun',
+    name: 'MGun',
     ammo: 99,
     maxAmmo: 99,
     damage: {

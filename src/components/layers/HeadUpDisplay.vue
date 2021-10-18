@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-layer__hud" :style="style">
+  <div class="aw-layer__hud" :style="zIndex">
     <slot/>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="aw-layer__vision" :style="style">
+  <div class="aw-layer__vision" :style="zIndex">
     <slot/>
   </div>
 </template>
