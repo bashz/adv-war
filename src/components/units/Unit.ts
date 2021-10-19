@@ -1,7 +1,8 @@
 import { Vue } from 'vue-class-component';
 import {
-  UnitEntity, unitFamily, unitEnvironment, movementMean, WeaponEntity,
+  UnitEntity, unitFamily, unitEnvironment, movementMean,
 } from '@/types/entities.d';
+import Weapon from '@/models/Weapon';
 
 export default class Unit extends Vue implements UnitEntity {
   cost = 1000;
@@ -24,15 +25,7 @@ export default class Unit extends Vue implements UnitEntity {
 
   maxFuel = 99;
 
-  primaryWeapon: WeaponEntity = {
-    name: 'MGun',
-    ammo: 99,
-    maxAmmo: 99,
-    damage: {
-      Infantry: 4,
-      Vehicle: 1,
-    },
-  };
+  primaryWeapon = new Weapon('MGun', 99, { Infantry: 4, Vehicle: 1 });
 
   x = 0;
 

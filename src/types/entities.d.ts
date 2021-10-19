@@ -13,6 +13,9 @@ export interface WeaponEntity {
   ammo: number;
   maxAmmo: number;
   damage: damageType;
+  refill(): void;
+  hasFired(): void ;
+  canFire(): boolean;
 }
 
 export interface UnitEntity {

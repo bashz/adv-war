@@ -9,22 +9,23 @@ export default class Weapon implements WeaponEntity {
 
   damage;
 
-  constructor(name: weaponType, maxAmmo: number, damage: damageType) {
+  constructor(name: weaponType, maxAmmo: number, damage: damageType, ammo?: number) {
     this.name = name;
     this.maxAmmo = maxAmmo;
     this.damage = damage;
-    this.refill();
+    if (ammo === undefined) this.refill();
+    else this.ammo = ammo;
   }
 
-  private refill(): void {
+  refill(): void {
     this.ammo = this.maxAmmo;
   }
 
-  private hasFired(): void {
+  hasFired(): void {
     this.ammo -= 1;
   }
 
-  private canFire(): boolean {
+  canFire(): boolean {
     return !!this.ammo;
   }
 }
