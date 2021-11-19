@@ -2,6 +2,7 @@ import { Options } from 'vue-class-component';
 import { BuildingEntity, unitEnvironment, UnitEntity } from '@/types/entities.d';
 import Terrain from '@/components/terrains/Terrain';
 import { mapTile, unitType } from '@/types/config.d';
+import store from '@/store';
 
 @Options({
   props: {
@@ -45,6 +46,8 @@ export default class Building extends Terrain implements BuildingEntity {
   }
 
   train(unit: unitType): void {
-    if (unit) window.scrollTo(this.x, this.y);
+    store.dispatch('spawn', {
+      type: unit, owner: this.owner, x: this.x, y: this.y,
+    });
   }
 }

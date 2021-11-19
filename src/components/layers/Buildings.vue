@@ -9,6 +9,8 @@
           :bottom="map[y - 1] && map[y - 1][x]"
           :left="map[y][x - 1]"
           :right="map[y][x + 1]"
+          :x="x"
+          :y="y"
           :style="background"
           :frame="frame"
           class="aw-building"
