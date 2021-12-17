@@ -37,61 +37,7 @@ export default class Game extends Vue {
   frame = -1;
 
   mounted(): void {
-    store.dispatch('initGame', {
-      units: [],
-      map: [
-        [
-          { type: 'HeadQuarter', owner: 4 }, { type: 'Base', owner: 4 }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' },
-          { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' },
-          { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Base', owner: 3 }, { type: 'HeadQuarter', owner: 3 },
-        ],
-        [
-          { type: 'Base', owner: 4 }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
-          { type: 'Mountain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' },
-          { type: 'Mountain' }, { type: 'City' }, { type: 'City' }, { type: 'Plain' }, { type: 'Base', owner: 3 },
-        ],
-        [
-          { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' },
-          { type: 'Wood' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Plain' },
-          { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' },
-        ],
-        [
-          { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' },
-          { type: 'Plain' }, { type: 'Wood' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' },
-          { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Mountain' }, { type: 'Mountain' },
-        ],
-        [
-          { type: 'Mountain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' },
-          { type: 'Wood' }, { type: 'City' }, { type: 'Base' }, { type: 'City' }, { type: 'Wood' },
-          { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'City' }, { type: 'Mountain' },
-        ],
-        [
-          { type: 'Mountain' }, { type: 'City' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' },
-          { type: 'Wood' }, { type: 'Wood' }, { type: 'City' }, { type: 'Wood' }, { type: 'Plain' },
-          { type: 'Plain' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'City' }, { type: 'Mountain' },
-        ],
-        [
-          { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Plain' },
-          { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' },
-          { type: 'Wood' }, { type: 'Wood' }, { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' },
-        ],
-        [
-          { type: 'Plain' }, { type: 'Plain' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Wood' },
-          { type: 'Plain' }, { type: 'Mountain' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Plain' },
-          { type: 'Wood' }, { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' },
-        ],
-        [
-          { type: 'Base', owner: 1 }, { type: 'Plain' }, { type: 'Plain' }, { type: 'City' }, { type: 'Wood' },
-          { type: 'Wood' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Plain' },
-          { type: 'Plain' }, { type: 'City' }, { type: 'Plain' }, { type: 'Plain' }, { type: 'Base', owner: 2 },
-        ],
-        [
-          { type: 'HeadQuarter', owner: 1 }, { type: 'Base', owner: 1 }, { type: 'Plain' }, { type: 'Wood' }, { type: 'City' },
-          { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Mountain' }, { type: 'Wood' }, { type: 'Wood' },
-          { type: 'Wood' }, { type: 'Wood' }, { type: 'Plain' }, { type: 'Base', owner: 2 }, { type: 'HeadQuarter', owner: 2 },
-        ],
-      ],
-    });
+    store.dispatch('loadGame', '/maps/4p1.json');
     this.$el.focus();
     cancelAnimationFrame(this.frame);
     // this.animate();

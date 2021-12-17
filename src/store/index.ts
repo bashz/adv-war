@@ -1,9 +1,10 @@
 import { createStore } from 'vuex';
 import { mapConfig, unitConfig } from '@/types/config.d';
 
-const defaultState: {units: unitConfig, map: mapConfig } = {
+const defaultState: {units: unitConfig, map: mapConfig, fileUrl: string } = {
   units: [],
   map: [],
+  fileUrl: '',
 };
 
 export default createStore({
@@ -14,6 +15,13 @@ export default createStore({
     initGame(state, game) {
       state.map = game.map;
       state.units = game.units;
+    },
+    saveState(state) {
+      const json = JSON.stringify({
+        units: state.units,
+        map: state.map,
+      });
+      state.fileUrl = URL.createObjectURL(new Blob([json], { type: 'text/json' }));
     },
     spawn(state, unit) {
       state.units = [...state.units, unit];
@@ -32,9 +40,12 @@ export default createStore({
       const game = await (await fetch(url)).json();
       context.commit('initGame', game);
     },
-    async loadSaveState(context, saveFile) {
+    async loadSavedState(context, saveFile) {
       const game = JSON.parse(await saveFile.text());
       context.commit('initGame', game);
+    },
+    async saveState(context) {
+      context.commit('saveState');
     },
     spawn(context, unit) {
       context.commit('spawn', unit);
