@@ -15,7 +15,7 @@ export type unitTile = {
   owner: number;
   x: number;
   y: number;
-  squadSize?: number;
+  power?: number;
   fuel?: number;
   primaryAmmo?: number;
   altAmmo?: number;

@@ -1,19 +1,36 @@
-import { Vue } from 'vue-class-component';
+import { Vue, Options } from 'vue-class-component';
 import {
   UnitEntity, unitFamily, unitEnvironment, movementMean,
 } from '@/types/entities.d';
 import Weapon from '@/models/Weapon';
 
+@Options({
+  props: {
+    owner: Number,
+    power: { type: Number, default: 10 },
+    fuel: Number,
+    primaryAmmo: Number,
+    altAmmo: Number,
+  },
+})
 export default class Unit extends Vue implements UnitEntity {
-  cost = 1000;
+  readonly owner!: number;
 
-  owner = 1;
+  readonly power!: number;
+
+  readonly fuel!: number;
+
+  readonly primaryAmmo!: number;
+
+  readonly altAmmo!: number;
+
+  cost = 1000;
 
   family: unitFamily = 'Infantry';
 
   environment: unitEnvironment = 'Land';
 
-  power = 10;
+  squadSize = this.power;
 
   moves = 3;
 
@@ -21,13 +38,13 @@ export default class Unit extends Vue implements UnitEntity {
 
   vision = 3;
 
-  fuel = 99;
-
   maxFuel = 99;
 
-  primaryWeapon = new Weapon('MGun', 99, { Infantry: 4, Vehicle: 1 });
+  get currentFuel(): number {
+    return this.fuel || this.maxFuel;
+  }
 
-  x = 0;
+  primaryWeapon = new Weapon('MGun', Infinity, { Infantry: 4, Vehicle: 1 }, this.primaryAmmo);
 
-  y = 0;
+  altWeapon!: Weapon;
 }

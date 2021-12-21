@@ -6,8 +6,11 @@
 import { mixins } from 'vue-class-component';
 import Building from '@/components/buildings/Building';
 import Animated from '@/components/Animated';
+import { unitType } from '@/types/config.d';
 
 export default class Base extends mixins(Building, Animated) {
+  units: Array<unitType> = ['Infantry', 'Mechanic', 'Recon', 'Tank', 'AntiAir'];
+
   sprites = [
     { x: 6, y: 0 },
     { x: 6, y: 1 },

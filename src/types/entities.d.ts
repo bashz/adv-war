@@ -1,7 +1,7 @@
 import { mapTile, unitType } from '@/types/config.d';
 
 export type daysWeather = 'clear' | 'rain' | 'snow';
-export type weaponType = 'MGun' | 'Bazooka' | 'Cannon' | 'Vulcano';
+export type weaponType = 'MGun' | 'Bazooka' | 'Cannon' | 'Vulcan';
 export type unitFamily = 'Infantry' | 'Vehicle';
 export type unitEnvironment = 'Land';
 export type movementMean = 'Infantry' | 'Mechanic' | 'Tires' | 'Tread';
@@ -14,25 +14,28 @@ export interface WeaponEntity {
   maxAmmo: number;
   damage: damageType;
   refill(): void;
-  hasFired(): void ;
+  fire(): void;
   canFire(): boolean;
 }
 
 export interface UnitEntity {
+  readonly owner: number;
+  readonly power: number;
+  readonly fuel: number;
+  readonly primaryAmmo: number;
+  readonly altAmmo?: number;
   cost: number;
   owner: number;
   family: unitFamily;
   environment: unitEnvironment;
-  power: number;
+  squadSize: number;
   moves: number;
   movementType: movementMean;
   vision: number;
   fuel: number;
-  maxFuel: number;
+  currentFuel: number;
   primaryWeapon: WeaponEntity;
   altWeapon?: WeaponEntity;
-  x: number;
-  y: number;
 }
 
 export interface TerrainEntity {
@@ -45,7 +48,7 @@ export interface BuildingEntity extends TerrainEntity {
   readonly current: mapTile;
   readonly x: number;
   readonly y: number;
-  units: Array<UnitEntity>;
+  units: Array<unitType>;
   repair: unitEnvironment;
   owner: number;
   leftToCapture: number;

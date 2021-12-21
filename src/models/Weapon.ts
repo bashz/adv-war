@@ -21,7 +21,7 @@ export default class Weapon implements WeaponEntity {
     this.ammo = this.maxAmmo;
   }
 
-  hasFired(): void {
+  fire(): void {
     this.ammo -= 1;
   }
 

@@ -1,5 +1,9 @@
 {
-  "units": [],
+  "units": [
+    {"type": "Infantry", "owner": 1, "x": 3, "y": 3, "fuel": 10, "squadSize": 5, "primaryAmmo": 30},
+    {"type": "Infantry", "owner": 1, "x": 6, "y": 6},
+    {"type": "Recon", "owner": 1, "x": 7, "y": 2}
+  ],
   "map": [
     [
       {

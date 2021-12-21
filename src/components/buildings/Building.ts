@@ -21,7 +21,7 @@ export default class Building extends Terrain implements BuildingEntity {
 
   readonly y!: number;
 
-  units: Array<UnitEntity> = [];
+  units: Array<unitType> = [];
 
   repair: unitEnvironment = 'Land';
 

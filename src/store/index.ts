@@ -7,6 +7,8 @@ const defaultState: {units: unitConfig, map: mapConfig, fileUrl: string } = {
   fileUrl: '',
 };
 
+// const normalizeUnits = (units: unitConfig) => units.map((unit) => unit);
+
 export default createStore({
   state: defaultState,
   getters: {
