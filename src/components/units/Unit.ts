@@ -3,6 +3,7 @@ import {
   UnitEntity, unitFamily, unitEnvironment, movementMean,
 } from '@/types/entities.d';
 import Weapon from '@/models/Weapon';
+import Status from '@/components/layers/Status.vue';
 
 @Options({
   props: {
@@ -11,6 +12,9 @@ import Weapon from '@/models/Weapon';
     fuel: Number,
     primaryAmmo: Number,
     altAmmo: Number,
+  },
+  components: {
+    Status,
   },
 })
 export default class Unit extends Vue implements UnitEntity {
@@ -40,8 +44,18 @@ export default class Unit extends Vue implements UnitEntity {
 
   maxFuel = 99;
 
-  get currentFuel(): number {
-    return this.fuel || this.maxFuel;
+  get hp(): number {
+    const powerDegit = Math.ceil(this.squadSize);
+    if (powerDegit > 9) return 0;
+    return powerDegit;
+  }
+
+  get lowFuel(): boolean {
+    return (this.fuel / this.maxFuel) < 0.25;
+  }
+
+  get lowAmmo(): boolean {
+    return this.primaryWeapon.lowAmmo || (this.altWeapon && this.altWeapon.lowAmmo);
   }
 
   primaryWeapon = new Weapon('MGun', Infinity, { Infantry: 4, Vehicle: 1 }, this.primaryAmmo);

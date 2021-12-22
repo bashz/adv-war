@@ -2,7 +2,7 @@ import { Vue } from 'vue-class-component';
 import { UISprite } from '@/types/ui.d';
 
 export default class Sprite extends Vue implements UISprite {
-  private defaultSprite = { x: 0, y: 0 };
+  protected defaultSprite = { x: 0, y: 0 };
 
   size = { w: 18, h: 18 };
 

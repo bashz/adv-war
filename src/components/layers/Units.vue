@@ -2,6 +2,11 @@
   <div class="aw-layer__units" :style="zIndex">
     <tile v-for="(unit, i) in units" :key="i" :x="unit.x" :y="unit.y">
       <component
+        :owner="unit.owner"
+        :power="unit.power"
+        :fuel="unit.fuel"
+        :primaryAmmo="unit.primaryAmmo"
+        :altAmmo="unit.altAmmo"
         :is="getUnit(unit)"
         :style="background"
         :frame="frame"

@@ -24,6 +24,9 @@ export interface UnitEntity {
   readonly fuel: number;
   readonly primaryAmmo: number;
   readonly altAmmo?: number;
+  readonly hp: number;
+  readonly lowFuel: boolean;
+  readonly lowAmmo: boolean;
   cost: number;
   owner: number;
   family: unitFamily;
@@ -33,7 +36,6 @@ export interface UnitEntity {
   movementType: movementMean;
   vision: number;
   fuel: number;
-  currentFuel: number;
   primaryWeapon: WeaponEntity;
   altWeapon?: WeaponEntity;
 }

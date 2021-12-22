@@ -1,5 +1,7 @@
 <template>
-  <div class="aw-unit__recon" :style="background"/>
+  <div class="aw-unit__recon" :style="background">
+    <status :ammo="lowAmmo" :fuel="lowFuel" :hp="hp"/>
+  </div>
 </template>
 
 <script lang="ts">

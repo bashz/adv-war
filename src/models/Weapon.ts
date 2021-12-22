@@ -17,6 +17,10 @@ export default class Weapon implements WeaponEntity {
     else this.ammo = ammo;
   }
 
+  get lowAmmo(): boolean {
+    return (this.ammo / this.maxAmmo) < 0.25;
+  }
+
   refill(): void {
     this.ammo = this.maxAmmo;
   }
