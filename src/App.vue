@@ -5,14 +5,19 @@
 <script lang="ts">
 import { Vue } from 'vue-class-component';
 
-const imageUrls = ['/img/world.png', '/img/estate.png', '/img/estate_snow.png', '/img/population.png'];
+const imageUrls = ['/img/world.png', '/img/estate.png', '/img/estate_snow.png', '/img/population.png', '/img/status.png'];
+
+const loadImages = (): void => {
+  imageUrls.forEach((url) => {
+    (new Image()).src = url;
+  });
+};
 
 export default class App extends Vue {
-  // eslint-disable-next-line class-methods-use-this
+  loadImages = loadImages;
+
   beforeCreate(): void {
-    imageUrls.forEach((url) => {
-      (new Image()).src = url;
-    });
+    this.loadImages();
   }
 }
 </script>
